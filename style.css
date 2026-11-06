@@ -1648,13 +1648,20 @@ body[data-lang="en"] .kural-meaning-en {
     padding: clamp(6px, 1.2vh, 12px) 8px;
     min-height: 100vh;
     min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
   }
 
   .temple-content-wrap {
-    padding: clamp(10px, 1.6vh, 18px) clamp(10px, 2.5vw, 16px);
-    width: 95vw;
-    max-width: 480px;
+    padding: clamp(10px, 1.6vh, 18px) clamp(8px, 2.2vw, 14px);
+    width: min(95vw, 420px);
+    max-width: 420px;
+    margin: auto 0;
     border-radius: 12px;
+    box-sizing: border-box;
   }
 
   /* Tamil Typography with Clean Line Height and No Overlap */
@@ -1675,37 +1682,173 @@ body[data-lang="en"] .kural-meaning-en {
     line-height: 1.5;
   }
 
-  /* Envelope on Mobile: approx 85% - 90% of screen width */
-  .cream-envelope {
-    width: min(88vw, 420px);
-    height: clamp(180px, 25vh, 230px);
-    border: 2.5px solid #D4AF37;
-    outline-offset: -5px;
+  /* Envelope Interactive Container - Centered */
+  .envelope-interactive-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: clamp(6px, 1.2vh, 12px) 0;
+    perspective: 1000px;
   }
 
+  /* Envelope on Mobile: Large, symmetrical & perfectly centered without edge overflow */
+  .cream-envelope {
+    width: 100%;
+    max-width: 360px;
+    height: clamp(200px, 27vh, 235px);
+    margin: 0 auto;
+    border: 2.5px solid #D4AF37;
+    outline: 1.5px dashed #E5BE59;
+    outline-offset: -5px;
+    border-radius: 8px;
+    box-shadow:
+      0 14px 34px rgba(35, 4, 10, 0.48),
+      0 6px 14px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(212, 175, 55, 0.3);
+    position: relative;
+  }
+
+  /* Envelope Flap & Borders on Mobile */
+  .envelope-flap {
+    clip-path: polygon(0 0, 100% 0, 100% 38%, 50% 68%, 0 38%);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+
+  .flap-gold-edge {
+    clip-path: polygon(0 0, 100% 0, 100% 38%, 50% 68%, 0 38%);
+    border-top: 2.5px solid #D4AF37;
+  }
+
+  /* Antique Gold Circular Wax Seal - Perfectly centered at flap tip */
   .wax-seal {
-    width: clamp(44px, 6.2vh, 50px);
-    height: clamp(44px, 6.2vh, 50px);
+    position: absolute;
+    top: 51%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(44px, 6vh, 48px);
+    height: clamp(44px, 6vh, 48px);
+    border: 2px solid #fae8a4;
+    outline-offset: -4px;
+    z-index: 6;
   }
 
   .seal-symbol {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
   }
 
+  .envelope.open .wax-seal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  /* Inner Card on Mobile: Proportional & Centered */
+  .envelope-inner-card {
+    width: min(88%, 326px);
+    height: clamp(185px, 25vh, 225px);
+    bottom: 10px;
+    padding: 5px 6px;
+    border-radius: 6px;
+    transform: translateX(-50%) translateY(0);
+    box-sizing: border-box;
+  }
+
+  /* Smooth Upward Extraction on Mobile - Zero sideways tilt or jump */
   .envelope.open .envelope-inner-card {
-    transform: translateX(-50%) translateY(clamp(-110px, -15vh, -145px));
+    transform: translateX(-50%) translateY(clamp(-120px, -16vh, -150px));
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 3px 12px rgba(212, 175, 55, 0.3);
+  }
+
+  .inner-card-frame {
+    padding: 6px 4px;
+    outline-offset: -3px;
+    gap: 2px;
+    box-sizing: border-box;
+  }
+
+  .inner-om {
+    font-size: clamp(0.95rem, 1.6vh, 1.15rem);
+    line-height: 1;
+    margin-bottom: 1px;
+  }
+
+  .inner-tag {
+    font-size: clamp(0.58rem, 2vw, 0.7rem);
+    letter-spacing: 1.2px;
+    line-height: 1.2;
+    margin-top: 1px;
+  }
+
+  .inner-couple-name {
+    font-size: clamp(0.88rem, 3.2vw, 1.12rem);
+    line-height: 1.35;
+    margin: 2px 0;
+    letter-spacing: 0.4px;
+    text-align: center;
+    word-break: normal;
+  }
+
+  .inner-auspicious-tag {
+    font-size: clamp(0.64rem, 2.2vw, 0.74rem);
+    line-height: 1.25;
+    margin: 1px 0;
+  }
+
+  .inner-date {
+    font-size: clamp(0.66rem, 2.2vw, 0.76rem);
+    letter-spacing: 1.5px;
+    margin-top: 2px;
+    font-weight: 700;
+  }
+
+  /* Front Pocket on Mobile - Clean, Readable Typography */
+  .envelope-front {
+    height: 64%;
+    padding: 6px 8px;
+    box-sizing: border-box;
+    border-top: 2px solid #D4AF37;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+
+  .envelope-border-design {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    box-sizing: border-box;
+    padding: 4px 6px;
+    outline-offset: -4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .pocket-traditional-icon {
+    font-size: clamp(0.78rem, 1.4vh, 0.9rem);
+    line-height: 1;
+    margin-bottom: 2px;
   }
 
   .envelope-pocket-title {
-    font-size: clamp(0.72rem, 1.3vh, 0.84rem);
-    line-height: 1.45;
+    font-size: clamp(0.7rem, 2.7vw, 0.82rem);
+    line-height: 1.35;
     color: #FDF2D1;
+    font-weight: 700;
+    margin: 1px 0;
+    text-align: center;
+    max-width: 100%;
   }
 
   .envelope-pocket-sub {
-    font-size: clamp(0.68rem, 1.2vh, 0.78rem);
-    line-height: 1.4;
+    font-size: clamp(0.64rem, 2.3vw, 0.74rem);
+    line-height: 1.3;
     color: #F8E8C8;
+    margin: 1px 0;
+    text-align: center;
+    max-width: 100%;
   }
 
   .open-btn {
@@ -1818,7 +1961,8 @@ body[data-lang="en"] .kural-meaning-en {
 
   .cream-envelope {
     height: clamp(150px, 24vh, 190px);
-    width: clamp(360px, 55vw, 480px);
+    width: min(100%, 460px);
+    max-width: 460px;
   }
 
   .wax-seal {
@@ -1840,5 +1984,130 @@ body[data-lang="en"] .kural-meaning-en {
 
   .open-helper-hint {
     margin-top: 2px;
+  }
+}
+
+/* Ultra-compact screens (e.g. 320px width - iPhone SE 1st Gen) */
+@media (max-width: 360px) {
+  .page-opening-envelope {
+    padding: 6px 4px;
+  }
+
+  .temple-content-wrap {
+    padding: 8px 6px;
+    border-width: 2px;
+    outline-offset: -4px;
+    width: 98vw;
+  }
+
+  .cream-envelope {
+    height: 195px;
+    border-width: 2px;
+    outline-offset: -4px;
+  }
+
+  .wax-seal {
+    width: 42px;
+    height: 42px;
+  }
+
+  .envelope-inner-card {
+    width: calc(100% - 16px);
+    height: 180px;
+    padding: 4px;
+  }
+
+  .envelope.open .envelope-inner-card {
+    transform: translateX(-50%) translateY(-115px);
+  }
+
+  .envelope-front {
+    padding: 4px 5px;
+  }
+
+  .envelope-border-design {
+    padding: 3px 4px;
+    outline-offset: -3px;
+  }
+
+  .pocket-traditional-icon {
+    font-size: 0.75rem;
+  }
+
+  .envelope-pocket-title {
+    font-size: 0.68rem;
+    letter-spacing: 0;
+  }
+
+  .envelope-pocket-sub {
+    font-size: 0.62rem;
+    letter-spacing: 0;
+  }
+
+  .inner-couple-name {
+    font-size: 0.85rem;
+  }
+}
+
+
+/* Ultra-compact screens (e.g. 320px width - iPhone SE 1st Gen) */
+@media (max-width: 360px) {
+  .page-opening-envelope {
+    padding: 6px 4px;
+  }
+
+  .temple-content-wrap {
+    padding: 8px 6px;
+    border-width: 2px;
+    outline-offset: -4px;
+    width: 98vw;
+  }
+
+  .cream-envelope {
+    height: 195px;
+    border-width: 2px;
+    outline-offset: -4px;
+  }
+
+  .wax-seal {
+    width: 42px;
+    height: 42px;
+  }
+
+  .envelope-inner-card {
+    width: calc(100% - 16px);
+    height: 180px;
+    padding: 4px;
+  }
+
+  .envelope.open .envelope-inner-card {
+    transform: translateX(-50%) translateY(-115px);
+  }
+
+  .envelope-front {
+    padding: 4px 5px;
+  }
+
+  .envelope-border-design {
+    padding: 3px 4px;
+    outline-offset: -3px;
+  }
+
+  .pocket-traditional-icon {
+    font-size: 0.75rem;
+  }
+
+  .envelope-pocket-title {
+    font-size: 0.68rem;
+    letter-spacing: 0;
+  }
+
+  .envelope-pocket-sub {
+    font-size: 0.62rem;
+    letter-spacing: 0;
+  }
+
+  .inner-couple-name {
+    font-size: 0.85rem;
   }
 }
