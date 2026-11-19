@@ -343,12 +343,12 @@ if (petalsContainer) {
 /* ======================================================
    4. LIVE COUNTDOWN TIMER & CEREMONY STATUS
    - Target Date: Sunday, 29 November 2026
-   - Start Time: 10:30 AM IST (2026-11-29T10:30:00+05:30)
-   - End Time: 12:30 PM IST (2026-11-29T12:30:00+05:30)
+   - Start Time: 10:45 AM IST (2026-11-29T10:45:00+05:30)
+   - End Time: 11:45 AM IST (2026-11-29T11:45:00+05:30)
    - Timezone: Asia/Kolkata (+05:30)
    ====================================================== */
-const eventStartISO = "2026-11-29T10:30:00+05:30";
-const eventEndISO = "2026-11-29T12:30:00+05:30";
+const eventStartISO = "2026-11-29T10:45:00+05:30";
+const eventEndISO = "2026-11-29T11:45:00+05:30";
 const eventStartTime = new Date(eventStartISO).getTime();
 const eventEndTime = new Date(eventEndISO).getTime();
 
@@ -431,8 +431,8 @@ function updateCountdown(forceRefresh = false) {
           ? "🌸 The Auspicious Nichayathartham Ceremony Has Begun! 🌸"
           : "🌸 நிச்சயதார்த்த சுப முகூர்த்த வைபவம் இனிதே துவங்கியுள்ளது! 🌸";
         const subText = currentLang === "en"
-          ? "Muhurtham: 10:30 AM – 12:30 PM • Bless the Couple!"
-          : "சுப முகூர்த்தம்: காலை 10:30 – 12:30 மணி • மணமக்களை வாழ்த்துங்கள்!";
+          ? "Muhurtham: 10:45 AM – 11:45 AM • Bless the Couple!"
+          : "சுப முகூர்த்தம்: காலை 10:45 – 11:45 மணி • மணமக்களை வாழ்த்துங்கள்!";
 
         countdownGrid.innerHTML = `
             <div class="event-status-banner">
